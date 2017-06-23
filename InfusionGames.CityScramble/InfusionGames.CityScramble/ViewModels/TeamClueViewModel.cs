@@ -3,34 +3,24 @@ using InfusionGames.CityScramble.Models;
 
 namespace InfusionGames.CityScramble.ViewModels
 {
-    public class TeamClueViewModel : PropertyChangedBase
+    public class TeamClueViewModel : BaseScreen
     {
 
-        public TeamClue Clue;
-        private readonly bool _isRaceActive;
+        public TeamClue Clue { get; set; }
+        private bool _isRaceActive;
 
-        public TeamClueViewModel(TeamClue clue, bool isRaceActive)
+        public TeamClueViewModel()
         {
-            Clue = clue;
-            _isRaceActive = isRaceActive;
+
+            DisplayName = "Clue";
         }
 
         public bool CanSubmit
-        {
+        {   
             get { return _isRaceActive && Clue?.Status != ClueStatus.Complete; }
+            set { _isRaceActive = value; }
         }
 
-        public string DisplayTitle
-        {
-            get
-            {
-                if (!string.IsNullOrWhiteSpace(Clue?.Name))
-                {
-                    return Clue.Name;
-                }
-                return Clue?.Description;
-            }
-        }
 
         public string DisplayDescription
         {

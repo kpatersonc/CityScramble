@@ -63,17 +63,9 @@ namespace InfusionGames.CityScramble.Services
 
         public async void ShowStartPage()
         {
-            // data are already set into the settingsService, have no idea wtf is going on because nor AuthenticationService.GetProfileAndSaveItToSettings nor DataService.GetProfileAsync methods were fired by this time.
             // Probably caching/storng session somewhere??? Figure out what is going on there an why.
             var localSettings = _settingsService;
-            var a = 1;
-            //if(await _authService.IsLoggedInAsync())
-            //{
-            // ShowMainNavStack();
-            //}else
-            //{
-            //ShowLogin();
-            //}
+            
 
             if (await _authService.IsLoggedInAsync())
             {

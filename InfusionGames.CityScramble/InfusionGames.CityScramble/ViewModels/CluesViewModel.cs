@@ -9,6 +9,7 @@ using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
 using Xamarin.Forms;
 using System.Collections.Generic;
+using System;
 
 namespace InfusionGames.CityScramble.ViewModels
 {
@@ -17,12 +18,16 @@ namespace InfusionGames.CityScramble.ViewModels
     /// </summary>
     public class CluesViewModel : BaseScreen, IRaceTab
     {
+        private readonly INavigationService _navigationService;
         private readonly IDataService _dataService;
 
-        public CluesViewModel(IDataService dataService)
+        public CluesViewModel(IDataService dataService, INavigationService navigationService)
         {
             _dataService = dataService;
+            _navigationService = navigationService;
             Clues = new BindableCollection<TeamClue>();
+            DisplayName = "Clues";
+
         }
         #region IRaceTab implementation
         /// <summary>
@@ -35,10 +40,28 @@ namespace InfusionGames.CityScramble.ViewModels
 		public string Icon { get; private set; } = "ic_clue.png";
 
         public int Priority => 3;
+        
+        public void GoToClue(object race)
+        {
 
+            Settings.Current.RaceId = SelectedRace.Id;
 
-        private BindableCollection<TeamClue> _clues;
+            _navigationService
+                .For<TeamClueViewModel>()
+                .WithParam(x=>x.Clue, CurrentClue)
+                .WithParam(x=>x.CanSubmit, true)
+                .Navigate();
+        }
+
         public BindableCollection<TeamClue> Clues { get; protected set; }
+
+        private TeamClue _currentClue;
+        public TeamClue CurrentClue {
+            get { return _currentClue; }
+            set {
+                SetField<TeamClue>(ref _currentClue, value);
+            }
+        }
 
 
         public bool IsSupported(Race race)
@@ -62,16 +85,7 @@ namespace InfusionGames.CityScramble.ViewModels
 
         protected override async void OnInitialize()
         {
-            IsBusy = true;
             base.OnInitialize();
-
-            IEnumerable<TeamClue> localClues = await _dataService.GetCluesForTeamAsync(SelectedRace.Id);
-            foreach (TeamClue cl in localClues)
-            {
-                Clues.Add(cl);
-            }
-            var a = 1;
-            IsBusy = false;
         }
     }
 }
