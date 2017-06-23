@@ -30,10 +30,12 @@ namespace InfusionGames.CityScramble.ViewModels
         }
         public JoinTeamViewModel(
             INavigationService navigationService,
-            IDataService dataService)
+            IDataService dataService,
+            ISettingsService settingsService)
         {
             _navigationService = navigationService;
             _dataService = dataService;
+            _settingService = settingsService;
 
             DisplayName = "Join Team";
 
@@ -55,6 +57,10 @@ namespace InfusionGames.CityScramble.ViewModels
             if (team != null) {
                 _settingService.MyTeamId = team.Id;
                 _settingService.MyTeamName = team.Name;
+
+                _navigationService
+                    .For<RaceSelectionViewModel>()
+                    .Navigate();
             }
 
             IsBusy = false;
