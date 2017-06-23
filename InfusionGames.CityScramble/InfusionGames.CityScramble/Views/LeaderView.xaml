@@ -12,13 +12,44 @@
     <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" BackgroundColor="{StaticResource BackgroundColor}">
       
       <!-- Top 3 teams -->
-      <ListView 
+
+      
+      <ListView
+            ItemsSource="{Binding Teams}"
                 Style="{StaticResource ListViewStyle}"
                 HasUnevenRows="True"
-                GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}"
+                IsRefreshing="{Binding IsBusy}"
               >
+        <ListView.ItemTemplate>
+          
+          <DataTemplate>
+            <!--<TextCell Text="{Binding Name}" 
+                      Detail="{Binding ., Converter={StaticResource dateConverter}"/>-->
+
+            <!-- List Race Details:
+                - Name
+                - Start / End
+                - Location ?
+                - Count down timer?
+                - Enrolled indicator
+              -->
+            <ViewCell>
+              <StackLayout Padding="30,8,8,30" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Label Text="{Binding Name}" TextColor="Black" />
+                <Label Text="{Binding Points}" TextColor="Black" />
+              </StackLayout>
+            </ViewCell>
+            
         
+          </DataTemplate>
+        
+        </ListView.ItemTemplate>
       </ListView>
+    
+      <Label Text="Your Team"/>
+      <Label Text="{Binding OurTeamName}"/>
+      <Label Text="{Binding OurTeamPoints}"/>
+  
     </StackLayout>
   </AbsoluteLayout>
 </ContentView>
