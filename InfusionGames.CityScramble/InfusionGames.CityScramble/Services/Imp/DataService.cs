@@ -67,13 +67,9 @@ namespace InfusionGames.CityScramble.Services
         {
             try
             {
-                var dummy = new Race { Name = "Dummy Race" };
+                var races = await _client.InvokeApiAsync<IEnumerable<Race>>("race", HttpMethod.Get, null);
 
-                return new[] { dummy };
-
-                //var races = await _client.InvokeApiAsync<IEnumerable<Race>>("race", HttpMethod.Get, null);
-
-                //return races;
+                return races;
             }
             catch (Exception ex)
             {
@@ -83,12 +79,14 @@ namespace InfusionGames.CityScramble.Services
 
         public async Task<Race> GetRaceAsync(string id)
         {
-            throw new NotImplementedException("GetRaceAsync");
+            var race = await _client.InvokeApiAsync<Race>("race/" + id, HttpMethod.Get, null);
+            return race;
         }
 
         public async Task<IEnumerable<TeamClue>> GetCluesForTeamAsync(string raceId)
         {
-            throw new NotImplementedException("GetCluesForTeamAsync");
+            var clues = await _client.InvokeApiAsync<IEnumerable<TeamClue>>("race/" + raceId + "/clues", HttpMethod.Get, null);
+            return clues;
         }
 
         public async Task<ClueResponse> GetClueResponse(string clueId)
