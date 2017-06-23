@@ -23,16 +23,7 @@
         <ListView.ItemTemplate>
           
           <DataTemplate>
-            <!--<TextCell Text="{Binding Name}" 
-                      Detail="{Binding ., Converter={StaticResource dateConverter}"/>-->
-
-            <!-- List Race Details:
-                - Name
-                - Start / End
-                - Location ?
-                - Count down timer?
-                - Enrolled indicator
-              -->
+           
             <ViewCell>
               <StackLayout Padding="30,8,8,30" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Label Text="{Binding Name}" TextColor="Black" />

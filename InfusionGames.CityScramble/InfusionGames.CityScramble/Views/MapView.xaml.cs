@@ -10,5 +10,10 @@ namespace InfusionGames.CityScramble.Views
         {
             InitializeComponent();
         }
+
+        public CustomMap Map
+        {
+            get { return this.myMap; }
+        }
     }
 }

@@ -16,6 +16,13 @@ namespace InfusionGames.CityScramble.ViewModels
     {
         #region IRaceTab implementation
 
+        private IDataService _dataService;
+
+        public MapViewModel(IDataService dataService)
+        {
+            _dataService = dataService;
+        }
+
         public Race SelectedRace { get; set; }
 
 		public string Title { get; private set; } = "Map";
@@ -33,11 +40,28 @@ namespace InfusionGames.CityScramble.ViewModels
 
         #region Overrides
 
-        protected override void OnViewAttached(object view, object context)
+        protected override async void OnViewAttached(object view, object context)
         {
             base.OnViewAttached(view, context);
-            
             // TODO: Acquire the map from the view because the map control isn't MVVM friendly
+
+            var mapView = (MapView)view;
+            var map = mapView.Map;
+            var clueCords = new List<Position>();
+            var clues = await _dataService.GetCluesForTeamAsync(SelectedRace.Id);
+            foreach(var clue in clues)
+            {
+                var pin = new Pin();
+                
+                pin.Position = new Position(clue.Latitude, clue.Longitude);
+                var customPin = new CustomPin(pin, "Pin");
+                map.AddCustomPin(customPin);
+                clueCords.Add(pin.Position);
+            }
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(GetCentralGeoCoordinate(clueCords), Distance.FromKilometers(1)));
+
+
+
         }
 
         #endregion

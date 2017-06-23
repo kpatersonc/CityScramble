@@ -6,5 +6,7 @@
              x:Class="InfusionGames.CityScramble.Views.MapView">
   <Grid VerticalOptions="FillAndExpand">
     <!-- TODO Map Control -->
+    <controls:CustomMap x:Name="myMap">
+     </controls:CustomMap>
   </Grid>
 </ContentView>

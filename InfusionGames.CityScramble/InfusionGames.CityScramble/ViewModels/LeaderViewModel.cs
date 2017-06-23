@@ -28,19 +28,18 @@ namespace InfusionGames.CityScramble.ViewModels
             _dataService = dataService;
             _navService = navService;
             _setService = setService;
-            Teams = new BindableCollection<Team>();
-           
+            Teams = new BindableCollection<Team>();          
         }
 
-
         private string _ourTeamName;
+        private int _ourTeamPoints;
+
         public string OurTeamName
         {
             get { return _ourTeamName; }
             set { SetField(ref _ourTeamName, value); }
         }
-
-        private int _ourTeamPoints;
+        
         public int OurTeamPoints
         {
             get { return _ourTeamPoints; }
@@ -55,9 +54,6 @@ namespace InfusionGames.CityScramble.ViewModels
 
         public int Priority => 1;
 
-        
-
-    private BindableCollection<Team> _teams;
         public BindableCollection<Team> Teams { get; protected set; }
 
         public bool IsSupported(Race race)
@@ -85,17 +81,7 @@ namespace InfusionGames.CityScramble.ViewModels
 
         protected override async void OnInitialize()
         {
-            //var test = SelectedRace.Teams;
-            //var race = await _dataService.GetRaceAsync(SelectedRace.Id);
-            //base.OnInitialize();
-            //OnActivate();
-            //IsBusy = true;
-
-            //foreach (var team in race.Teams)
-            //{
-            //    Teams.Add(team);
-            //}
-            //IsBusy = false;
+           
         }
         #endregion
     }    
