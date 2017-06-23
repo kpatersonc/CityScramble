@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InfusionGames.CityScramble.Views.LoginView"
+             xmlns:cm="clr-namespace:Caliburn.Micro.Xamarin.Forms;assembly=Caliburn.Micro.Platform.Xamarin.Forms"
+             xmlns:views="clr-namespace:InfusionGames.CityScramble.Views;assembly=InfusionGames.CityScramble">
+	<ScrollView BackgroundColor="{StaticResource InfusionBlue}">
+        <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*"/>
+              <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+            <Button Grid.Row="1" cm:Message.Attach="Login" Text="Login with Google" TextColor="{StaticResource ButtonTextColor}" />
+        </Grid>
+	</ScrollView>
+</ContentPage>

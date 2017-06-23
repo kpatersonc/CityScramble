@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <color name="infusion_blue">#0060b4</color>
+  <color name="text_color">#FFFFFF</color>
+  
+  <style name="CityScrambleTheme" parent="@android:style/Theme.DeviceDefault">
+    <item name="android:actionBarTabStyle">@style/CityScrambleActionBarTabStyle</item>
+    <item name="android:icon">@android:color/transparent</item>
+  </style>
+
+  <style name="CityScrambleActionBarTabStyle" parent="@android:style/Widget.DeviceDefault.ActionBar.TabView">
+    <item name="android:background">@color/infusion_blue</item>
+    <item name="android:textColor">@color/text_color</item>
+  </style>
+  
+  <!--
+  <style name="MyTheme.Base" parent="Theme.AppCompat.Light">
+  </style>
+
+  <style name="MyTheme" parent="MyTheme.Base">
+  </style>-->
+
+  <style name="MyTheme.Splash" parent ="Theme.AppCompat.Light">
+    <item name="android:windowBackground">@drawable/splash_screen</item>
+    <item name="android:windowNoTitle">true</item>  
+  </style>
+
+</resources>

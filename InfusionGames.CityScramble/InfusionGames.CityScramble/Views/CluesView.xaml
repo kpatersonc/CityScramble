@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cm="clr-namespace:Caliburn.Micro.Xamarin.Forms;assembly=Caliburn.Micro.Platform.Xamarin.Forms"
+             xmlns:views="clr-namespace:InfusionGames.CityScramble.Views;assembly=InfusionGames.CityScramble"
+             x:Class="InfusionGames.CityScramble.Views.CluesView"
+             >
+
+    <StackLayout Style="{StaticResource StackLayoutStyle}">
+        <ListView 
+              Style="{StaticResource ListViewStyle}"
+              GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}"
+              >
+          
+        </ListView>
+    </StackLayout>
+</ContentView>

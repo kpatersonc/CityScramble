@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:InfusionGames.CityScramble.Controls;assembly=InfusionGames.CityScramble"
+             xmlns:views="clr-namespace:InfusionGames.CityScramble.Views;assembly=InfusionGames.CityScramble"
+             x:Class="InfusionGames.CityScramble.Views.MapView">
+  <Grid VerticalOptions="FillAndExpand">
+    <!-- TODO Map Control -->
+  </Grid>
+</ContentView>

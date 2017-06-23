@@ -1,0 +1,43 @@
+﻿<UserControl
+    x:Class="InfusionGames.CityScramble.UWP.Renderers.CluePushpinOverlay"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:InfusionGames.CityScramble.UWP.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="50"
+    d:DesignWidth="180"
+    MaxWidth="180"
+    x:Name="Overlay_Root"
+    >
+
+    <Border BorderThickness="2" Background="White" CornerRadius="5">
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MaxWidth="150"/>
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Grid.Column="0" 
+                       Margin="5,0,0,0"
+                       VerticalAlignment="Center"
+                       Text="{Binding Title, ElementName=Overlay_Root, FallbackValue=No Title Available}" 
+                       TextWrapping="WrapWholeWords"
+                       TextTrimming="WordEllipsis"
+                       MaxLines="3"/>
+
+            <Button x:Name="button" Grid.Column="1" HorizontalAlignment="Center" Background="{x:Null}">
+                <Grid>
+                    <Ellipse Width="30" Height="30" Stroke="#0060b4" StrokeThickness="1" Fill="White" />
+                    <TextBlock Text="i" 
+                               FontStyle="Italic"
+                               Foreground="#0060b4" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"/>
+                </Grid>
+                
+            </Button>
+        </Grid>
+    </Border>
+</UserControl>

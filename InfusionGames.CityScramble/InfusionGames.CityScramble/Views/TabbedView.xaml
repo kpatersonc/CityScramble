@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:cm="clr-namespace:Caliburn.Micro.Xamarin.Forms;assembly=Caliburn.Micro.Platform.Xamarin.Forms" 
+            x:Class="InfusionGames.CityScramble.Views.TabbedView"
+            Title="{Binding DisplayName}"
+            ItemsSource="{Binding Items}"
+            SelectedItem="{Binding ActiveItem}"
+            Style="{StaticResource TabbedPageStyle}"
+            >
+  <TabbedPage.ItemTemplate>
+    <DataTemplate>
+		  <ContentPage Title="{Binding Title}" Icon="{Binding Icon}" >
+        <ContentView cm:View.Model="{Binding}" />
+      </ContentPage>
+    </DataTemplate>
+  </TabbedPage.ItemTemplate>
+</TabbedPage>

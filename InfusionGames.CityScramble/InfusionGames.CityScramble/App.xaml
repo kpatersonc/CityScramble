@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<cm:FormsApplication xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cm="clr-namespace:Caliburn.Micro.Xamarin.Forms;assembly=Caliburn.Micro.Platform.Xamarin.Forms"
+             xmlns:converters="clr-namespace:InfusionGames.CityScramble.Converters;assembly=InfusionGames.CityScramble"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Class="InfusionGames.CityScramble.App">
+  <cm:FormsApplication.Resources>
+    <ResourceDictionary>
+      <Color x:Key="InfusionBlue" >#0060b4</Color>
+      <Color x:Key="CommandButtonColor">#1F849F</Color>
+      <Color x:Key="BarTextColor">White</Color>
+      <Color x:Key="BackgroundColor">White</Color>
+      <Color x:Key="ButtonTextColor">White</Color>
+      <Style x:Key="LabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="Black"/>
+      </Style>
+      <Style x:Key="CommandButtonStyle" TargetType="Button">
+        <Setter Property="TextColor" Value="{StaticResource CommandButtonColor}"/>
+        <Setter Property="BackgroundColor" Value ="{StaticResource BackgroundColor}"/>
+        <Style.Triggers>
+          <Trigger TargetType="Button" Property="IsEnabled" Value="False">
+            <Setter Property="TextColor" Value="Gray" />
+          </Trigger>
+        </Style.Triggers>
+      </Style>
+      <Style x:Key="ListViewStyle" TargetType="ListView">
+        <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}"/>
+        <Setter Property="HasUnevenRows" Value="True"/>
+        <Setter Property="IsPullToRefreshEnabled" Value="True"/>
+        <Setter Property="SeparatorColor" Value="Gray" />
+      </Style>
+      <Style x:Key="TabbedPageStyle" TargetType="TabbedPage" >
+        <Setter Property="BarTextColor" Value="Black"/>
+      </Style>
+      <Style x:Key="StackLayoutStyle" TargetType="StackLayout">
+        <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}"/>
+      </Style>
+      <Style x:Key="CirleImageStyle" TargetType="controls:CircleImage">
+        <Setter Property="HeightRequest" Value="50"/>
+        <Setter Property="WidthRequest" Value="50"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Aspect" Value="AspectFill"/>
+        <Setter Property="BorderColor" Value="{StaticResource InfusionBlue}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+      </Style>
+      <converters:NegateBooleanConverter x:Key="NegateBooleanConverter"/>
+      <converters:DebugBindingConverter x:Key="DebugBindingConverter" />
+      <DataTemplate x:Key="GroupHeaderTemplate">
+        <ViewCell>
+          <Grid>
+            <Label Margin="8, 10, 8, 10" Text="{Binding Name}" TextColor="Black" FontSize="Medium" />
+          </Grid>
+        </ViewCell>
+      </DataTemplate>
+    </ResourceDictionary>
+  </cm:FormsApplication.Resources>
+</cm:FormsApplication>

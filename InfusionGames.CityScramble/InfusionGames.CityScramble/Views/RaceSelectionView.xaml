@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cm="clr-namespace:Caliburn.Micro.Xamarin.Forms;assembly=Caliburn.Micro.Platform.Xamarin.Forms"
+             xmlns:converters="clr-namespace:InfusionGames.CityScramble.Converters;assembly=InfusionGames.CityScramble"
+             xmlns:views="clr-namespace:InfusionGames.CityScramble.Views;assembly=InfusionGames.CityScramble"
+             x:Class="InfusionGames.CityScramble.Views.RaceSelectionView"
+             Title="{Binding DisplayName}">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:RaceDateConverter x:Key="dateConverter" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <AbsoluteLayout>
+
+    <!-- place content in center of screen -->
+    <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" BackgroundColor="{StaticResource BackgroundColor}">
+      <!-- list of races -->
+      <ListView ItemsSource="{Binding Races, Mode=OneWay}"
+                SelectedItem="{Binding CurrentRace}"
+                Style="{StaticResource ListViewStyle}"
+                IsGroupingEnabled="true"
+                HasUnevenRows="True"
+                cm:Message.Attach="[Event ItemSelected] = [ViewRace($selectedItem)]"
+                RefreshCommand="{Binding RefreshCommand}"
+                IsRefreshing="{Binding IsBusy}"
+                GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}"
+        >
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <!--<TextCell Text="{Binding Name}" 
+                      Detail="{Binding ., Converter={StaticResource dateConverter}"/>-->
+
+            <!-- List Race Details:
+                - Name
+                - Start / End
+                - Location ?
+                - Count down timer?
+                - Enrolled indicator
+              -->
+            <ViewCell>
+              <StackLayout Padding="30,8,8,30"
+                           HorizontalOptions="FillAndExpand"
+						   VerticalOptions="FillAndExpand">
+                <Label Text="{Binding Name}"
+                       TextColor="Black"
+                       />
+                <Label Text="{Binding ., Converter={StaticResource dateConverter}}"
+                       Margin="10,0,0,0"
+                       TextColor="Gray"
+                       FontSize="Small"
+                       />
+              </StackLayout>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+        <!-- Adding an empty footer so that empty rows are not shown on iOS. -->
+        <ListView.Footer>
+          <StackLayout>
+          </StackLayout>
+        </ListView.Footer>
+      </ListView>
+    </StackLayout>
+  </AbsoluteLayout>
+</ContentPage>
