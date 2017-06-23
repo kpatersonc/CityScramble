@@ -28,6 +28,7 @@ namespace InfusionGames.CityScramble
 				.PerRequest<RaceSelectionViewModel>()
 				.PerRequest<TabbedViewModel>()
                 .PerRequest<TeamListViewModel>()
+                .PerRequest<TeamClueViewModel>()
                 .PerRequest<JoinTeamViewModel>()
                 .PerRequest<IRaceTab, LeaderViewModel>()
 				.PerRequest<IRaceTab, CluesViewModel>()

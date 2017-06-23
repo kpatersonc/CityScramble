@@ -10,6 +10,8 @@
         <ListView
             ItemsSource="{Binding Clues}"
                 Style="{StaticResource ListViewStyle}"
+                cm:Message.Attach="[Event ItemSelected] = [GoToClue($selectedItem)]"
+                SelectedItem="{Binding CurrentClue}"
                 HasUnevenRows="True"
                 IsRefreshing="{Binding IsBusy}"
               >
@@ -25,9 +27,9 @@
                 - Count down timer?
                 - Enrolled indicator
               -->
-              <ViewCell>
+              <ViewCell >
                 <StackLayout Padding="30,8,8,30" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"> 
-                  <Label Text="{Binding Name}" TextColor="Black" />
+                  <Label Text="{Binding Name}" TextColor="Black"  HorizontalOptions="FillAndExpand"/>
                 </StackLayout>
               </ViewCell>
             </DataTemplate>

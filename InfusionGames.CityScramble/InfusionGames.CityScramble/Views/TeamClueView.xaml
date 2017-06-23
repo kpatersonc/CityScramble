@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cm="clr-namespace:Caliburn.Micro.Xamarin.Forms;assembly=Caliburn.Micro.Platform.Xamarin.Forms"
+             xmlns:views="clr-namespace:InfusionGames.CityScramble.Views;assembly=InfusionGames.CityScramble"
+             x:Class="InfusionGames.CityScramble.Views.TeamClueView"
+             Title="{Binding DisplayName}">
+
+  <StackLayout>
+    <Label Text="{Binding Clue.Name}" HorizontalOptions="FillAndExpand"/>
+    <Label Text="{Binding Clue.Description}" HorizontalOptions="FillAndExpand"/>
+    <Label Text="{Binding Clue.Points}" HorizontalOptions="FillAndExpand"/>
+
+    <Button Text="View Location" HorizontalOptions="FillAndExpand"/>
+    <Button Text="Upload photo" HorizontalOptions="FillAndExpand"/>
+    <Button Text="Skip this clue" HorizontalOptions="FillAndExpand"/>
+  </StackLayout>
+</ContentPage>
