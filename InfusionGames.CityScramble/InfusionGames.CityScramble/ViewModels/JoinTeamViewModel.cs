@@ -12,15 +12,22 @@ using Xamarin.Forms;
 
 namespace InfusionGames.CityScramble.ViewModels
 {
-    //no clue why we are inhereting BaseScreen here (as an example was taken RaceSelectionViewModel). figure it out.
-    class JoinTeamViewModel : BaseScreen
+    public class JoinTeamViewModel : BaseScreen
     {
+
         private readonly INavigationService _navigationService;
         private readonly IDataService _dataService;
-
-        public BindableCollection<Team> Teams { get; protected set; }
-
-        public Team CurrentTeam { get; protected set; }
+        private readonly ISettingsService _settingService;
+        private string _teamCode;
+        public string TeamCode {
+            get {
+                return _teamCode;
+            }
+            set {
+                //_teamCode = value;
+                SetField(ref _teamCode, value);
+            }
+        }
         public JoinTeamViewModel(
             INavigationService navigationService,
             IDataService dataService)
@@ -28,42 +35,31 @@ namespace InfusionGames.CityScramble.ViewModels
             _navigationService = navigationService;
             _dataService = dataService;
 
-            Teams = new BindableCollection<Team>();
+            DisplayName = "Join Team";
 
-            DisplayName = "Teams";
-
-            RefreshCommand = new Command(OnRefresh);
-            OnRefresh();
+            JoinTeam = new Command(OnJoinTeam);
         }
 
-        public ICommand RefreshCommand { get; protected set; }
+        public ICommand JoinTeam { get; protected set; }
 
         protected override void OnActivate()
         {
             base.OnActivate();
-
-            OnRefresh();
         }
 
-        private async void OnRefresh()
-        {
+        private async void OnJoinTeam() {
             IsBusy = true;
 
             await Task.Yield();
-
-            // Clear the list or you'll get duplicates upon resuming
-            Teams.Clear();
-
-            // get the list of races
-            IEnumerable<Team> teams = await _dataService.GetTeams();
-            
-            foreach (Team t in teams)
-            {
-                Teams.Add(t);
+            var team = await _dataService.JoinTeamAsync(TeamCode);
+            if (team != null) {
+                _settingService.MyTeamId = team.Id;
+                _settingService.MyTeamName = team.Name;
             }
 
             IsBusy = false;
         }
-        
+      
+
     }
 }

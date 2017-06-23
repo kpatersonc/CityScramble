@@ -83,7 +83,7 @@ namespace InfusionGames.CityScramble.Services
                 }
                 else
                 {
-                    CreateAndBind(typeof(JoinTeamViewModel));
+                    //CreateAndBind(typeof(JoinTeamViewModel));
                     ShowTeams();
                 }
             }

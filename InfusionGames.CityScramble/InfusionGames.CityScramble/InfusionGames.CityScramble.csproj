@@ -76,6 +76,7 @@
     <Compile Include="ViewModels\Extensions.cs" />
     <Compile Include="ViewModels\GroupOfT.cs" />
     <Compile Include="ViewModels\JoinTeamViewModel.cs" />
+    <Compile Include="ViewModels\TeamListViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MapViewModel.cs" />
     <Compile Include="ViewModels\RaceSelectionViewModel.cs" />
@@ -86,6 +87,9 @@
     </Compile>
     <Compile Include="Views\JoinTeamView.xaml.cs">
       <DependentUpon>JoinTeamView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TeamListView.xaml.cs">
+      <DependentUpon>TeamListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -255,6 +259,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\settings_cog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\TeamListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\JoinTeamView.xaml">

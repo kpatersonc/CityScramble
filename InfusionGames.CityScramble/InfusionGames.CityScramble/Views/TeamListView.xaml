@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cm="clr-namespace:Caliburn.Micro.Xamarin.Forms;assembly=Caliburn.Micro.Platform.Xamarin.Forms"
+             xmlns:views="clr-namespace:InfusionGames.CityScramble.Views;assembly=InfusionGames.CityScramble"
+             x:Class="InfusionGames.CityScramble.Views.TeamListView"
+             Title="{Binding DisplayName}">
+
+  <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" BackgroundColor="{StaticResource BackgroundColor}">
+    <!-- list of races -->
+    <ListView ItemsSource="{Binding Teams}"
+              SelectedItem="{Binding CurrentTeam}"
+              HasUnevenRows="True"
+              RefreshCommand="{Binding RefreshCommand}"
+              IsRefreshing="{Binding IsBusy}"
+              GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}"
+        >
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <!--<TextCell Text="{Binding Name}" 
+                      Detail="{Binding ., Converter={StaticResource dateConverter}"/>-->
+
+          <!-- List Race Details:
+                - Name
+                - Start / End
+                - Location ?
+                - Count down timer?
+                - Enrolled indicator
+              -->
+          <ViewCell>
+            <StackLayout Padding="30,8,8,30"
+                         HorizontalOptions="FillAndExpand"
+             VerticalOptions="FillAndExpand">
+              <Label Text="{Binding Name}"
+                     TextColor="Black"
+                       />
+             
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+      <!-- Adding an empty footer so that empty rows are not shown on iOS. -->
+      <ListView.Footer>
+        <StackLayout>
+        </StackLayout>
+      </ListView.Footer>
+    </ListView>
+  </StackLayout>
+  <!--<StackLayout>
+    <Label Text="{Binding DisplayName}" VerticalOptions="Center" HorizontalOptions="Center" />
+    <Button Text ="Test button" />
+    
+  </StackLayout>-->
+</ContentPage>

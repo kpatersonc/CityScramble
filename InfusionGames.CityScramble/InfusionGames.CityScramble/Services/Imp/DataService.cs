@@ -56,8 +56,11 @@ namespace InfusionGames.CityScramble.Services
 
         public async Task<Team> JoinTeamAsync(string teamCode)
         {
+            JToken responseToken = await _client.InvokeApiAsync("profile?joinCode=" + teamCode);
 
-            throw new NotImplementedException("JoinTeamAsync");
+            Team team = responseToken.ToObject<Team>();
+
+            return team;
         }
 
         public async Task<IEnumerable<Race>> GetRacesAsync()
